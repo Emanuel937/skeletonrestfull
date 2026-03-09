@@ -1,0 +1,4 @@
+ alembic revision --autogenerate -m "commenntaire"
+
+ #TASK 
+ - Make all crud 
