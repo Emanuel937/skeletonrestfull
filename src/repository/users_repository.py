@@ -1,4 +1,4 @@
-from model.userprogression_modal import User
+from model.users_model import User 
 from repository.base_repository import BaseRepository
 
 # UserRepository manages user accounts.
