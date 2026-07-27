@@ -1,4 +1,6 @@
  alembic revision --autogenerate -m "commenntaire"
+ alembic upgrade head  -> apply migration 
+ uvicorn main:app --reload  -> run the host
 
  #TASK 
  - Make all crud 

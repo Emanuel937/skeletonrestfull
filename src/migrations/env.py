@@ -3,9 +3,9 @@ import os
 from logging.config import fileConfig
 from sqlalchemy     import engine_from_config
 from sqlalchemy     import pool
-from db.base        import Base 
+from model.base        import Base 
 from alembic        import context
-from db             import models 
+from model            import models 
 
 sys.path.append(os.path.abspath("src"))
 
