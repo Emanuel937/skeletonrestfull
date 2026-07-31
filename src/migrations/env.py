@@ -5,7 +5,6 @@ from sqlalchemy     import engine_from_config
 from sqlalchemy     import pool
 from model.base        import Base 
 from alembic        import context
-from model            import models 
 
 sys.path.append(os.path.abspath("src"))
 

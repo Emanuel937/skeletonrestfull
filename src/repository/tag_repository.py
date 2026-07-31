@@ -8,10 +8,10 @@ from repository.base_repository import BaseRepository
 # - list_all()
 # - update()
 # - delete()
+
 class TagRepository(BaseRepository):
     def __init__(self):
         super().__init__(Tag)
 
-    # Custom method
-    def get_by_slug(self, slug: str):
-        return self.db.query(Tag).filter(Tag.slug == slug).first()
+    def get_by_slug(self, db, slug: str):
+        return db.query(Tag).filter(Tag.slug == slug).first()

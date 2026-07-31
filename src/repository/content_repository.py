@@ -13,5 +13,5 @@ class ContentRepository(BaseRepository):
         super().__init__(Content)
 
     # Custom method
-    def list_by_type(self, type_name: str):
-        return self.db.query(Content).filter(Content.type == type_name).all()
+    def list_by_type(self, type_name: str, db):
+        return db.query(Content).filter(Content.type == type_name).all()

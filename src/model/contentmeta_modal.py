@@ -8,7 +8,7 @@ class ContentMeta(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
     content_id: Mapped[int] = mapped_column(Integer, nullable=False)
     key: Mapped[str] = mapped_column(String(255), nullable=False)
-    value: Mapped[str] = mapped_column(String, nullable=False)
+    value: Mapped[str] = mapped_column(String(1000), nullable=False)
 
     def __repr__(self):
         return f"<ContentMeta id={self.id} key={self.key}>"

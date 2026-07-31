@@ -13,12 +13,12 @@ class UserProgressRepository(BaseRepository):
         super().__init__(UserProgress)
 
     # Custom methods
-    def get_progress(self, user_id: int, content_id: int):
+    def get_progress(self, user_id: int, content_id: int, db):
         return (
-            self.db.query(UserProgress)
+            db.query(UserProgress)
             .filter(UserProgress.user_id == user_id, UserProgress.content_id == content_id)
             .first()
         )
 
-    def list_user_progress(self, user_id: int):
-        return self.db.query(UserProgress).filter(UserProgress.user_id == user_id).all()
+    def list_user_progress(self, user_id: int, db):
+        return db.query(UserProgress).filter(UserProgress.user_id == user_id).all()

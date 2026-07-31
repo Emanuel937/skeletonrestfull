@@ -19,39 +19,38 @@ from sqlalchemy.exc import NoResultFound
 # This pattern avoids repeating CRUD code and keeps your project clean and scalable.
 class BaseRepository:
     def __init__(self, model):
-        self.db = SessionLocal()
         self.model = model
 
-    def create(self, **kwargs):
+    def create(self, db, **kwargs):
         obj = self.model(**kwargs)
-        self.db.add(obj)
-        self.db.commit()
-        self.db.refresh(obj)
+        db.add(obj)
+        db.commit()
+        db.refresh(obj)
         return obj
 
-    def get_by_id(self, obj_id: int):
+    def get_by_id(self, db, obj_id: int):
         try:
-            return self.db.query(self.model).filter(self.model.id == obj_id).one()
+            return db.query(self.model).filter(self.model.id == obj_id).one()
         except NoResultFound:
             return None
 
-    def list_all(self):
-        return self.db.query(self.model).all()
+    def list_all(self, db):
+        return db.query(self.model).all()
 
-    def update(self, obj_id: int, **kwargs):
-        obj = self.get_by_id(obj_id)
+    def update(self, db, obj_id: int, **kwargs):
+        obj = self.get_by_id(db, obj_id)
         if not obj:
             return None
         for key, value in kwargs.items():
             setattr(obj, key, value)
-        self.db.commit()
-        self.db.refresh(obj)
+        db.commit()
+        db.refresh(obj)
         return obj
 
-    def delete(self, obj_id: int):
-        obj = self.get_by_id(obj_id)
+    def delete(self, db, obj_id: int):
+        obj = self.get_by_id(db, obj_id)
         if not obj:
             return False
-        self.db.delete(obj)
-        self.db.commit()
+        db.delete(obj)
+        db.commit()
         return True

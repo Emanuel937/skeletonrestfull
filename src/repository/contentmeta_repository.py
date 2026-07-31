@@ -20,5 +20,5 @@ class ContentMetaRepository(BaseRepository):
             .first()
         )
 
-    def list_meta(self, content_id: int):
-        return self.db.query(ContentMeta).filter(ContentMeta.content_id == content_id).all()
+    def list_meta(self, content_id: int, db):
+        return db.query(ContentMeta).filter(ContentMeta.content_id == content_id).all()

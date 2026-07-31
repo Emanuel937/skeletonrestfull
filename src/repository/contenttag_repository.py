@@ -13,8 +13,8 @@ class ContentTagRepository(BaseRepository):
         super().__init__(ContentTag)
 
     # Custom methods
-    def list_tags_for_content(self, content_id: int):
-        return self.db.query(ContentTag).filter(ContentTag.content_id == content_id).all()
+    def list_tags_for_content(self, content_id: int, db):
+        return db.query(ContentTag).filter(ContentTag.content_id == content_id).all()
 
-    def list_content_for_tag(self, tag_id: int):
-        return self.db.query(ContentTag).filter(ContentTag.tag_id == tag_id).all()
+    def list_content_for_tag(self, tag_id: int, db):
+        return db.query(ContentTag).filter(ContentTag.tag_id == tag_id).all()

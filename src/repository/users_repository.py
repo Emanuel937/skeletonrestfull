@@ -13,5 +13,5 @@ class UserRepository(BaseRepository):
         super().__init__(User)
 
     # Custom method
-    def get_by_email(self, email: str):
-        return self.db.query(User).filter(User.email == email).first()
+    def get_by_email(self, email: str, db):
+        return db.query(User).filter(User.email == email).first()

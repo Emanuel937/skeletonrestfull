@@ -4,3 +4,4 @@ from .tag_model import Tag
 from .contenttag_modal import ContentTag
 from .contentmeta_modal import ContentMeta
 from .content_modal import Content
+from .media_modal import MediaAsset
